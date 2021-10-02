@@ -31,5 +31,20 @@ module.exports={
                 resolve(response)
             })
         })
+    },
+    updateStaff:(proId,staffDetails)=>{
+        return new Promise((reslove,reject)=>{
+            db.get().collection(collection.ADD_STAFF).updateOne({_id:objectId(proId)},{
+                $set:{
+                    Name:staffDetails.Name,
+                    Email:staffDetails.Email,
+                    Position:staffDetails.Position,
+                    Phone:staffDetails.Phone
+                }
+            }).then((result)=>{
+                reslove(result)
+            })
+        })
+
     }
 }

@@ -19,20 +19,26 @@ router.post('/add-staff',(req,res)=>{
     // console.log(products)
     res.render('add-staff')
   })
-  
 })
 router.get('/edit-staff/:id',(req,res)=>{
   let proId = req.params.id
     staffHelper.getDetailsStaff(proId).then((get)=>{
-    console.log(get)
+    // console.log(get) 
     res.render('edit-staff',{get})
   })
-  
+router.post('/edit-staff/:id',(req,res)=>{
+  let proId = req.params.id
+  // console.log(req.body)
+  staffHelper.updateStaff(proId,req.body).then((result)=>{
+    console.log(result)
+    res.redirect('/')
+  })
+})
 })
 router.get('/delete-staff/:id',(req,res)=>{
   let proId = req.params.id
   staffHelper.deleteStaff(proId).then((data)=>{
-    console.log(data)
+    // console.log(data)
     res.redirect('/')
   })
 })
