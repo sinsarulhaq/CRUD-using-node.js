@@ -21,8 +21,13 @@ router.post('/add-staff',(req,res)=>{
   })
   
 })
-router.get('/edit-staff',(req,res)=>{
-  res.render('edit-staff')
+router.get('/edit-staff/:id',(req,res)=>{
+  let proId = req.params.id
+    staffHelper.getDetailsStaff(proId).then((get)=>{
+    console.log(get)
+    res.render('edit-staff',{get})
+  })
+  
 })
 router.get('/delete-staff/:id',(req,res)=>{
   let proId = req.params.id

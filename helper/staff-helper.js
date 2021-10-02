@@ -23,5 +23,13 @@ module.exports={
                 resolve(response)
             })
         })
+    },
+    getDetailsStaff:(proId)=>{
+        return new Promise((resolve,reject)=>{
+             db.get().collection(collection.ADD_STAFF).findOne({_id:objectId(proId)}).then((response)=>{
+                //  console.log(response)
+                resolve(response)
+            })
+        })
     }
 }
