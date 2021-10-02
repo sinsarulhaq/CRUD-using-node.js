@@ -4,7 +4,7 @@
             <a href="/add-staff" class="btn btn-success ml-auto">Add Staff</a>
         </div>
            <div class="row">
-               <div class="col-md">
+               <div class="col-md-12">
                     <table class="table mt-5">
             <thead>
                 <tr>
@@ -12,20 +12,23 @@
                     <th scope="col">Email</th>
                     <th scope="col">Position</th>
                     <th scope="col">Ph.no</th>
+                    <th scope="col"></th>
                 </tr>
             </thead>
             <tbody>
+                {{#each staffs}}
                 <tr>
-                    <td>Mark</td>
-                    <td>Otto</td>
-                    <td>@mdo</td>
-                    <td>@mdo</td>
+                    <td>{{this.Name}}</td>
+                    <td>{{this.Email}}</td>
+                    <td>{{this.Position}}</td>
+                    <td>{{this.Phone}}</td>
                     <td>
-                        <a href="/edit-staff" class="btn btn-primary">Edit</a>
-                        <a href="#" class="btn btn-danger">Delete</a>
+                        <a href="/edit-staff/{{this._id}}" class="btn btn-primary">Edit</a>
+                        <a href="/delete-staff/{{this._id}}" class="btn btn-danger">Delete</a>
                     </td>
                    
                 </tr>
+                {{/each}}
             </tbody>
         </table>
                </div>

@@ -4,7 +4,11 @@ var staffHelper = require('../helper/staff-helper')
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('view-staff');
+  staffHelper.getStaff().then((staffs)=>{
+    // console.log(staffs)
+    res.render('view-staff',{staffs});
+  })
+  
 });
 router.get('/add-staff',(req,res)=>{
   res.render('add-staff')
@@ -12,7 +16,7 @@ router.get('/add-staff',(req,res)=>{
 router.post('/add-staff',(req,res)=>{
   // console.log(req.body)
   staffHelper.addStaff(req.body).then((products)=>{
-    console.log(products)
+    // console.log(products)
     res.render('add-staff')
   })
   
@@ -20,5 +24,13 @@ router.post('/add-staff',(req,res)=>{
 router.get('/edit-staff',(req,res)=>{
   res.render('edit-staff')
 })
+router.get('/delete-staff/:id',(req,res)=>{
+  let proId = req.params.id
+  staffHelper.deleteStaff(proId).then((data)=>{
+    console.log(data)
+    res.redirect('/')
+  })
+})
+
 
 module.exports = router;
