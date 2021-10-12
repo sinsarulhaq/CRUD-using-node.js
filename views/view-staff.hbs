@@ -24,7 +24,7 @@
                     <td>{{this.Phone}}</td>
                     <td>
                         <a href="/edit-staff/{{this._id}}" class="btn btn-primary">Edit</a>
-                        <a href="/delete-staff/{{this._id}}" class="btn btn-danger">Delete</a>
+                        <a href="/delete-staff/{{this._id}}" onclick="return confirm('are you sure want to delete {{this.Name}} ?')" class="btn btn-danger">Delete</a>
                     </td>
                    
                 </tr>

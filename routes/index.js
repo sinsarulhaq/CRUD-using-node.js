@@ -5,7 +5,7 @@ var staffHelper = require('../helper/staff-helper')
 /* GET home page. */
 router.get('/', function(req, res, next) {
   staffHelper.getStaff().then((staffs)=>{
-    // console.log(staffs)
+    console.log(staffs)
     res.render('view-staff',{staffs});
   })
   
@@ -30,7 +30,7 @@ router.post('/edit-staff/:id',(req,res)=>{
   let proId = req.params.id
   // console.log(req.body)
   staffHelper.updateStaff(proId,req.body).then((result)=>{
-    console.log(result)
+    //console.log(result)
     res.redirect('/')
   })
 })
